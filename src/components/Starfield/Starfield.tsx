@@ -4,7 +4,7 @@ import { useFrame, ThreeElements } from '@react-three/fiber'
 
 
 
-function Starfield(){
+function Starfield( {}){
     const meshRef = useRef<THREE.LineSegments>(null);
     let LINE_COUNT = 10000;
     let SPEED = 2.5;

@@ -17,6 +17,7 @@ import { useRouter } from 'next/navigation';
 export default function Home() {
   const [orbitEnabled, setOrbitEnabled] = useState(true);
   const [aspectRatio, setAspectRatio] = useState<number>(1);
+  const [isExploring, setisExploring] = useState(false);
 
   const router = useRouter();
   useEffect(() => {
@@ -59,7 +60,7 @@ export default function Home() {
         <h1 className={css.text}>
           no man has gone before
         </h1>
-        <button className={css.button}>Explore</button>
+        <button className={css.button} onClick={() => setisExploring(true)}>Explore</button>
       </div>
     </body>
 
