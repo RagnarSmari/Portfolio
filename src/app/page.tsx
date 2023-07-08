@@ -13,15 +13,25 @@ import Sidebar from '@/components/Sidebar/Sidebar';
 import Starfield from '@/components/Starfield/Starfield';
 // import Sidebar from '@/components/Sidebar/Sidebar';
 import { useRouter } from 'next/navigation';
+import OBJModel from '@/components/OBJModel/OBJModel';
+import { FBXLoader } from 'three-stdlib';
+import FBXModel from '@/components/FBXModel/FBXModel';
 
 export default function Home() {
   const [orbitEnabled, setOrbitEnabled] = useState(true);
   const [aspectRatio, setAspectRatio] = useState<number>(1);
+  const [isExploring, setisExploring] = useState(false);
+  const [textOpacity, setTextOpacity] = useState(1);
 
   const router = useRouter();
   useEffect(() => {
     setAspectRatio(window.innerWidth / window.innerHeight);
-  })
+    if (isExploring) {
+      setTextOpacity(0);
+    } else {
+        setTextOpacity(1);
+    }
+  }, [isExploring]);
   
   return (
     <body>
@@ -45,21 +55,24 @@ export default function Home() {
             </Suspense>
           </Draggable> */}
           {/* <Stars /> */}
-          <Starfield />
+          <Starfield isExploring = {isExploring} setIsExploring={setisExploring}/>
           {/* <SingleLine /> */}
           {/* <Sidebar /> */}
           {/* <OrbitControls enabled={orbitEnabled} /> */}
           {/* <Floor position={[0, -1, 0]}/> */}
+          {/* <Suspense fallback={null}>
+            <FBXModel url="models/x-wing.fbx" position={[0, 0, 0]} />
+          </Suspense> */}
         </Canvas>
       </div>
       <div className={css.header}>
-        <h1 className={css.text}>
+        <h1 className={css.text} style={{opacity: textOpacity}}>
           To boldly go where
         </h1>
-        <h1 className={css.text}>
+        <h1 className={css.text} style={{opacity: textOpacity}} >
           no man has gone before
         </h1>
-        <button className={css.button}>Explore</button>
+        <button className={css.button} onClick={() => setisExploring(true)} style={{opacity: textOpacity}}>Explore</button>
       </div>
     </body>
 

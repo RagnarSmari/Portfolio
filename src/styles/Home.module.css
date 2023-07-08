@@ -30,7 +30,8 @@
 .text{
     color: white;
     font-size: xx-large;
-    font-family: Star Wars
+    font-family: Star Wars;
+    transition: opacity 1s ease;
 }
 
 .button{
@@ -47,4 +48,6 @@
 .button:hover {
     background-color: aliceblue;
 }
+
+
 
