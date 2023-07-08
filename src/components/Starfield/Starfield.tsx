@@ -4,7 +4,7 @@ import { useFrame, ThreeElements } from '@react-three/fiber'
 
 
 
-function Starfield( {}){
+function Starfield( { ...props} : {isExploring : boolean, setIsExploring : (isExploring : boolean) => void}){
     const meshRef = useRef<THREE.LineSegments>(null);
     let LINE_COUNT = 10000;
     let SPEED = 2.5;
@@ -42,23 +42,38 @@ function Starfield( {}){
         if (meshRef.current) {
             let pos = geom.getAttribute('position');
             let vel = geom.getAttribute('velocity');
-            for (let i = 0; i < LINE_COUNT; i++) {
-                let velocity = new THREE.Vector3().fromBufferAttribute(vel, i * 2);
-                let position1 = new THREE.Vector3().fromBufferAttribute(pos, i * 2);
-                let position2 = new THREE.Vector3().fromBufferAttribute(pos, i * 2 + 1);
-
-                position1.add(velocity);
-                position2.add(velocity);
-
-                if (position1.z > 200) { // reset position when star gets too far
-                    let z1 = Math.random() * -900;
-                    position1.z = z1;
-                    position2.z = z1 + 50;
+            if (props.isExploring) {
+                // Gradually decrease scale of LineSegments
+                meshRef.current.scale.lerp(new THREE.Vector3(0, 0, 0), -0.05);
+          
+                // Gradually change color to black
+                mat.color.lerp(new THREE.Color('black'), 0.01);
+          
+                // If scale is small enough, stop exploring
+                if (meshRef.current.scale.length() < 0.01) {
+                  props.setIsExploring(false);
                 }
+              } else {
+                // Your existing animation logic here...
+                for (let i = 0; i < LINE_COUNT; i++) {
+                    let velocity = new THREE.Vector3().fromBufferAttribute(vel, i * 2);
+                    let position1 = new THREE.Vector3().fromBufferAttribute(pos, i * 2);
+                    let position2 = new THREE.Vector3().fromBufferAttribute(pos, i * 2 + 1);
+    
+                    position1.add(velocity);
+                    position2.add(velocity);
+    
+                    if (position1.z > 200) { // reset position when star gets too far
+                        let z1 = Math.random() * -900;
+                        position1.z = z1;
+                        position2.z = z1 + 50;
+                    }
+    
+                    pos.setXYZ(i * 2, position1.x, position1.y, position1.z);
+                    pos.setXYZ(i * 2 + 1, position2.x, position2.y, position2.z);
+                }
+              }
 
-                pos.setXYZ(i * 2, position1.x, position1.y, position1.z);
-                pos.setXYZ(i * 2 + 1, position2.x, position2.y, position2.z);
-            }
             pos.needsUpdate = true;  // tell three.js to update the GPU with the new positions
         }
     });
