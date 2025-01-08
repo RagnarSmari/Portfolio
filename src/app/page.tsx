@@ -28,7 +28,6 @@ export default function Home() {
   }, [isExploring, hasExplored]);
 
   return (
-      <div>
         <div className={css.scene}>
           <Canvas
               shadows
@@ -46,26 +45,25 @@ export default function Home() {
               }
               <SpaceBackground fadeIn={isExploring}/>
           </Canvas>
+            <div className={css.overlay}>
+                {!hasExplored &&
+                    <div className={css.header}>
+                        <h1 className="star-wars-front-text" style={{opacity: textOpacity}}>
+                            To boldly go where
+                        </h1>
+                        <h1 className="star-wars-front-text" style={{opacity: textOpacity}}>
+                            no man has gone before
+                        </h1>
+                        <button
+                            className="explore-button"
+                            onClick={() => setisExploring(true)}
+                            style={{opacity: textOpacity}}
+                        >
+                            Explore
+                        </button>
+                    </div>
+                }
+            </div>
         </div>
-
-          {!hasExplored &&
-              <div className={css.header}>
-                  <h1 className="star-wars-front-text" style={{opacity: textOpacity}}>
-                      To boldly go where
-                  </h1>
-                  <h1 className="star-wars-front-text" style={{opacity: textOpacity}}>
-                      no man has gone before
-                  </h1>
-                  <button
-                      className="explore-button"
-                      onClick={() => setisExploring(true)}
-                      style={{opacity: textOpacity}}
-                  >
-                      Explore
-                  </button>
-              </div>
-          }
-
-      </div>
   );
 }
