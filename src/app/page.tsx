@@ -4,8 +4,8 @@ import { Canvas, useFrame } from '@react-three/fiber';
 import css from '../styles/Home.module.css';
 import { useEffect, useState } from 'react';
 import Starfield from '@/components/Starfield/Starfield';
-import { useRouter } from 'next/navigation';
 import SpaceBackground from "@/components/SpaceBackground/SpaceBackground";
+import PortfolioContent from "@/components/PortfolioContent/PortfolioContent";
 
 export default function Home() {
   const [aspectRatio, setAspectRatio] = useState<number>(1);
@@ -14,7 +14,6 @@ export default function Home() {
   const [hasExplored, setHasExplored] = useState(false);
   const [fadeInBackground, setFadeInBackground] = useState(false);
 
-  const router = useRouter();
   useEffect(() => {
     setAspectRatio(window.innerWidth / window.innerHeight);
     if (isExploring) {
@@ -46,7 +45,7 @@ export default function Home() {
               <SpaceBackground fadeIn={isExploring}/>
           </Canvas>
             <div className={css.overlay}>
-                {!hasExplored &&
+                {!hasExplored ? (
                     <div className={css.header}>
                         <h1 className="star-wars-front-text" style={{opacity: textOpacity}}>
                             To boldly go where
@@ -62,7 +61,11 @@ export default function Home() {
                             Explore
                         </button>
                     </div>
-                }
+                ) : (
+                    <div className={css.portfolioContent}>
+                        <PortfolioContent />
+                    </div>
+                )}
             </div>
         </div>
   );
