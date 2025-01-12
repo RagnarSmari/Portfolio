@@ -17,15 +17,16 @@
 
 .portfolioContent {
     position: absolute;
+    height: 100%;
+    width: 100%;
     top: 40%;
     left: 50%;
     z-index: 1;
     transform: translate(-50%, -50%); 
     text-align: center;
-    /*border: 1px white solid;*/
     background-color: transparent;
-    animation: fadeIn 2s ease-out forwards;
 }
+
 
 
 .header{

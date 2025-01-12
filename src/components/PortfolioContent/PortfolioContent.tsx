@@ -1,10 +1,4 @@
 
-export default function PortfolioContent() {
-    return (
-        <div className="crawl-container">
-            <div className="crawl">
-                <h1 className="welcome-text">Welcome to my portfolio👋</h1>
-            </div>
-        </div>
-    )
+export function ContactMe() {
+    return <div>Get in touch with me.</div>;
 }

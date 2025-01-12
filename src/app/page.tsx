@@ -1,11 +1,12 @@
-"use client"; // This is a client component 
+"use client"; 
 
-import { Canvas, useFrame } from '@react-three/fiber';
+import { Canvas } from '@react-three/fiber';
 import css from '../styles/Home.module.css';
 import { useEffect, useState } from 'react';
 import Starfield from '@/components/Starfield/Starfield';
 import SpaceBackground from "@/components/SpaceBackground/SpaceBackground";
-import PortfolioContent from "@/components/PortfolioContent/PortfolioContent";
+import AboutMe from "@/components/AboutMe/AboutMe";
+import Projects from "@/components/Projects/Projects";
 
 export default function Home() {
   const [aspectRatio, setAspectRatio] = useState<number>(1);
@@ -13,6 +14,8 @@ export default function Home() {
   const [textOpacity, setTextOpacity] = useState(1);
   const [hasExplored, setHasExplored] = useState(false);
   const [fadeInBackground, setFadeInBackground] = useState(false);
+  const [activeSection, setActiveSection] = useState<"AboutMe" | "Projects" | "ContactMe">("AboutMe")
+  
 
   useEffect(() => {
     setAspectRatio(window.innerWidth / window.innerHeight);
@@ -62,8 +65,19 @@ export default function Home() {
                         </button>
                     </div>
                 ) : (
-                    <div className={css.portfolioContent}>
-                        <PortfolioContent />
+                    <div>
+                        <div className={css.portfolioContent}>
+                            <button className="explore-button navigationButtons"
+                                    onClick={() => setActiveSection("Projects")}>
+                                Projects
+                            </button>
+                            <button className="explore-button aboutMeButton"
+                                    onClick={() => setActiveSection("AboutMe")}>
+                                About me
+                            </button>
+                            {activeSection === "AboutMe" && <AboutMe/>}
+                            {activeSection === "Projects" && <Projects/>}
+                        </div>
                     </div>
                 )}
             </div>
