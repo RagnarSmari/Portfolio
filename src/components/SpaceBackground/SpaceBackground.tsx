@@ -51,9 +51,9 @@ export default function SpaceBackground({ fadeIn } : SpaceBackgroundProps) {
             opacityRef.current = Math.min(opacityRef.current + delta * 0.5, 1); 
             starMaterial.opacity = opacityRef.current;
         }
-        if (backgroundRef.current) {
-            backgroundRef.current.rotation.y += 0.0005; // Slowly rotate 
-        }
+        // if (backgroundRef.current) {
+        //     backgroundRef.current.rotation.y += 0.0005; // Slowly rotate 
+        // }
     });
 
     return (
