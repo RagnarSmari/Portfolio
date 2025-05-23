@@ -3,7 +3,7 @@ const projects = [
   {
     id: 1,
     title: "Pumba",
-    description: "A full-stack web application",
+    description: "A full-stack web application for companies time management.",
     image: "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=600&h=400&fit=crop",
     technologies: ["C#", ".NET Core", "Vue.js", "PostgreSQL", "Docker", "Azure"],
     features: [

@@ -24,7 +24,7 @@ const navItems = [
           variant="ghost"
           size="sm"
           @click="scrollToSection(item.section)"
-          class="hover:text-yellow-500 transition-colors text-xs sm:text-sm md:text-base px-2 sm:px-3 md:px-4"
+          class="hover:text-secondary-500 transition-colors text-xs sm:text-sm md:text-base px-2 sm:px-3 md:px-4"
       >
         {{ item.label }}
       </UButton>

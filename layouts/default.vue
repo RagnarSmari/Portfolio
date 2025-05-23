@@ -4,10 +4,8 @@ import Navbar from "~/components/layout/navbar.vue";
 
 <template>
   <div class="relative min-h-screen">
-    <!-- Starfield Background -->
     <StarfieldBackground />
 
-    <!-- Main Content -->
     <div class="relative z-10 flex justify-center">
       <div class="container">
         <Navbar />
