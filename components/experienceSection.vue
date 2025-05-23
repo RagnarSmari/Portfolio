@@ -3,7 +3,7 @@ const experiences = [
   {
     id: 1,
     company: "Akureyri University",
-    position: "Inern",
+    position: "Teacher",
     period: "2024 - 2024",
     location: "On-site",
     type: "Part-time",
