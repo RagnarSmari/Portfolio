@@ -39,4 +39,4 @@ jobs:
         uses: nuxt-hub/action@v1
         id: deploy
         with:
-          project-key: portfolio-4dw4
+          project-key: portfolio-w6ay
