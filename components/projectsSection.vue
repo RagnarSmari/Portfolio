@@ -1,0 +1,219 @@
+<script setup lang="ts">
+const projects = [
+  {
+    id: 1,
+    title: "Pumba",
+    description: "A full-stack web application for companies time management.",
+    image: "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=600&h=400&fit=crop",
+    technologies: ["C#", ".NET Core", "Vue.js", "PostgreSQL", "Docker", "Azure"],
+    features: [
+      "Real-time inventory tracking",
+      "Secure payment integration",
+      "Admin dashboard with analytics",
+      "Responsive mobile design"
+    ],
+    liveUrl: "https://example.com",
+    githubUrl: "https://github.com/ragnar/ecommerce",
+    status: "Completed",
+    category: "Full Stack"
+  },
+  {
+    id: 2,
+    title: "Task Management API",
+    description: "RESTful API for task management with advanced features like team collaboration, real-time notifications, and comprehensive reporting.",
+    image: "https://images.unsplash.com/photo-1611224923853-80b023f02d71?w=600&h=400&fit=crop",
+    technologies: ["Golang", "PostgreSQL", "Redis", "Docker", "Kubernetes"],
+    features: [
+      "RESTful API design",
+      "Real-time notifications",
+      "Team collaboration tools",
+      "Advanced reporting system"
+    ],
+    githubUrl: "https://github.com/ragnar/task-api",
+    status: "Completed",
+    category: "Backend"
+  },
+  {
+    id: 3,
+    title: "Analytics Dashboard",
+    description: "Interactive dashboard for data visualization and business intelligence, featuring real-time charts, custom reports, and data export capabilities.",
+    image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=600&h=400&fit=crop",
+    technologies: ["Vue.js", "Nuxt.js", "C#", "SQL Server", "Chart.js"],
+    features: [
+      "Interactive data visualization",
+      "Custom report builder",
+      "Real-time data updates",
+      "Export to multiple formats"
+    ],
+    liveUrl: "https://analytics.example.com",
+    githubUrl: "https://github.com/ragnar/analytics",
+    status: "In Progress",
+    category: "Frontend"
+  },
+  {
+    id: 4,
+    title: "Microservices Architecture",
+    description: "Scalable microservices system with API gateway, service discovery, and distributed tracing for enterprise-level applications.",
+    image: "https://images.unsplash.com/photo-1518432031352-d6fc5c10da5a?w=600&h=400&fit=crop",
+    technologies: ["C#", "Docker", "Kubernetes", "MongoDB", "Redis", "RabbitMQ"],
+    features: [
+      "Service mesh architecture",
+      "API gateway implementation",
+      "Distributed tracing",
+      "Auto-scaling capabilities"
+    ],
+    githubUrl: "https://github.com/ragnar/microservices",
+    status: "Completed",
+    category: "DevOps"
+  }
+]
+
+const categories = ["All", "Full Stack", "Backend", "Frontend", "DevOps"]
+const selectedCategory = ref("All")
+
+const filteredProjects = computed(() => {
+  if (selectedCategory.value === "All") {
+    return projects
+  }
+  return projects.filter(project => project.category === selectedCategory.value)
+})
+</script>
+
+<template>
+  <div class="min-h-screen py-12 sm:py-16 md:py-20 px-4 sm:px-6 md:px-8">
+    <div class="max-w-7xl mx-auto">
+      <!-- Section Header -->
+      <div class="text-center mb-12 md:mb-16">
+        <h2 class="text-3xl sm:text-4xl md:text-5xl font-bold mb-4">Featured Projects</h2>
+        <p class="text-lg sm:text-xl text-neutral-400 max-w-3xl mx-auto">
+          A showcase of my recent work, demonstrating expertise in full-stack development,
+          system architecture, and modern technologies
+        </p>
+      </div>
+
+      <!-- Category Filter -->
+      <div class="flex flex-wrap justify-center gap-2 sm:gap-3 mb-12">
+        <UButton
+            v-for="category in categories"
+            :key="category"
+            :variant="selectedCategory === category ? 'solid' : 'outline'"
+            :color="selectedCategory === category ? 'primary' : 'neutral'"
+            size="sm"
+            @click="selectedCategory = category"
+            class="transition-all duration-200"
+        >
+          {{ category }}
+        </UButton>
+      </div>
+
+      <!-- Projects Grid -->
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 md:gap-8">
+        <UCard
+            v-for="project in filteredProjects"
+            :key="project.id"
+            class="group hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1"
+        >
+          <!-- Project Image -->
+          <div class="relative overflow-hidden rounded-t-lg">
+            <img
+                :src="project.image"
+                :alt="project.title"
+                class="w-full h-48 sm:h-56 object-cover group-hover:scale-105 transition-transform duration-300"
+            />
+            <div class="absolute top-4 right-4">
+              <UBadge
+                  :color="project.status === 'Completed' ? 'primary' : 'neutral'"
+                  variant="solid"
+                  size="sm"
+              >
+                {{ project.status }}
+              </UBadge>
+            </div>
+            <div class="absolute top-4 left-4">
+              <UBadge color="neutral" variant="solid" size="sm">
+                {{ project.category }}
+              </UBadge>
+            </div>
+          </div>
+
+          <!-- Project Content -->
+          <template #header>
+            <div class="space-y-2">
+              <h3 class="text-xl sm:text-2xl font-bold group-hover:text-primary-600 transition-colors">
+                {{ project.title }}
+              </h3>
+              <p class="text-neutral-600 text-sm sm:text-base leading-relaxed">
+                {{ project.description }}
+              </p>
+            </div>
+          </template>
+
+          <div class="space-y-4">
+            <!-- Features -->
+            <div>
+              <h4 class="font-semibold text-gray-900 mb-2 text-sm sm:text-base">Key Features:</h4>
+              <ul class="grid grid-cols-1 sm:grid-cols-2 gap-1">
+                <li
+                    v-for="feature in project.features"
+                    :key="feature"
+                    class="flex items-start gap-2 text-sm text-gray-700"
+                >
+                  <UIcon name="i-heroicons-check-circle" class="text-primary-500 mt-0.5 flex-shrink-0 text-xs" />
+                  <span>{{ feature }}</span>
+                </li>
+              </ul>
+            </div>
+
+            <!-- Technologies -->
+            <div>
+              <h4 class="font-semibold text-gray-900 mb-2 text-sm sm:text-base">Technologies:</h4>
+              <div class="flex flex-wrap gap-2">
+                <UBadge
+                    v-for="tech in project.technologies"
+                    :key="tech"
+                    variant="subtle"
+                    color="primary"
+                    size="sm"
+                    class="text-xs"
+                >
+                  {{ tech }}
+                </UBadge>
+              </div>
+            </div>
+
+            <!-- Action Buttons -->
+            <div class="flex flex-wrap gap-3 pt-2">
+              <UButton
+                  v-if="project.liveUrl"
+                  color="primary"
+                  size="sm"
+                  :to="project.liveUrl"
+                  external
+                  target="_blank"
+              >
+                <UIcon name="i-heroicons-globe-alt" class="mr-2" />
+                Live Demo
+              </UButton>
+              <UButton
+                  v-if="project.githubUrl"
+                  variant="outline"
+                  color="gray"
+                  size="sm"
+                  :to="project.githubUrl"
+                  external
+                  target="_blank"
+              >
+                <UIcon name="i-heroicons-code-bracket" class="mr-2" />
+                View Code
+              </UButton>
+            </div>
+          </div>
+        </UCard>
+      </div>
+    </div>
+  </div>
+</template>
+
+<style scoped>
+
+</style>
