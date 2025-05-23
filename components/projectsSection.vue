@@ -2,8 +2,8 @@
 const projects = [
   {
     id: 1,
-    title: "E-Commerce Platform",
-    description: "A full-stack e-commerce solution built with modern technologies, featuring real-time inventory management, payment processing, and admin dashboard.",
+    title: "Pumba",
+    description: "A full-stack web application",
     image: "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=600&h=400&fit=crop",
     technologies: ["C#", ".NET Core", "Vue.js", "PostgreSQL", "Docker", "Azure"],
     features: [

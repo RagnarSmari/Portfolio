@@ -22,12 +22,15 @@ const experiences = [
     type: "Full-time",
     description: "Developed and maintaine Promas, a production management software for fish processing equipment.",
     achievements: [
-      "Built responsive web applications using Vue.js and C# backends",
-      "Implemented automated testing strategies improving code coverage by 60%",
-      "Integrated third-party APIs and payment processing systems",
-      "Participated in agile development processes and sprint planning"
+      "Implemented realtime dashboards with SignalR and Blazor",
+      "Integrated docker and refined deployment strategies for improved reliability",
+      "Implemented automated testing strategies improving code coverage",
+      "Participated in agile development processes and sprint planning",
+      "Implemented external logging service for improved observability and reliability for communication",
+      "Integrated PostgreSQL database and switched hosting provider from Windows to Linux",
+      "Communicated with clients and stakeholders to ensure project success",
     ],
-    technologies: ["C#", ".NET", "Blazor", "PostgreSQL", "Docker","SQL Server", "Eclipse Mosquitto","Git", "Azure"]
+    technologies: ["C#", ".NET", "Blazor", "SignalR", "PostgreSQL", "Docker","SQL Server", "Eclipse Mosquitto", "Git", "Azure"]
   }
 ]
 </script>
