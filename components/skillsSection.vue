@@ -4,40 +4,38 @@ const skills = [
     category: "Backend Development",
     icon: "i-heroicons-server",
     items: [
-      { name: "C#", level: 90, color: "purple" },
-      { name: "Golang", level: 85, color: "blue" },
-      { name: ".NET Core", level: 88, color: "indigo" },
-      { name: "ASP.NET", level: 85, color: "violet" }
+      { name: "C#", icon: "", color: "purple" },
+      { name: "Golang", icon: "", color: "blue" },
+      { name: "Eclipse mosquitto", icon: "", color: "indigo" },
+      { name: "ASP.NET", icon: "", color: "violet" },
     ]
   },
   {
     category: "Frontend Development",
     icon: "i-heroicons-computer-desktop",
     items: [
-      { name: "Vue.js", level: 80, color: "green" },
-      { name: "Nuxt.js", level: 75, color: "emerald" },
-      { name: "TypeScript", level: 78, color: "blue" },
-      { name: "JavaScript", level: 82, color: "yellow" }
+      { name: "Vue.js", icon: 80, color: "green" },
+      { name: "Nuxt.js", icon: 75, color: "emerald" },
+      { name: "TypeScript", icon: 78, color: "blue" },
+      { name: "JavaScript", icon: 82, color: "yellow" },
+      { name: "Blazor", icon: 82, color: "yellow" }
     ]
   },
   {
     category: "Database & Tools",
     icon: "i-heroicons-circle-stack",
     items: [
-      { name: "SQL Server", level: 85, color: "red" },
-      { name: "PostgreSQL", level: 80, color: "blue" },
-      { name: "MongoDB", level: 75, color: "green" },
-      { name: "Redis", level: 70, color: "red" }
+      { name: "SQL Server", icon: 85, color: "red" },
+      { name: "PostgreSQL", icon: 80, color: "blue" },
     ]
   },
   {
     category: "DevOps & Cloud",
     icon: "i-heroicons-cloud",
     items: [
-      { name: "Docker", level: 80, color: "blue" },
-      { name: "Kubernetes", level: 70, color: "blue" },
-      { name: "Azure", level: 75, color: "blue" },
-      { name: "Git", level: 90, color: "orange" }
+      { name: "Docker", icon: 80, color: "blue" },
+      { name: "Azure", icon: 75, color: "blue" },
+      { name: "Git", icon: 90, color: "orange" }
     ]
   }
 ]
@@ -49,7 +47,7 @@ const skills = [
       <!-- Section Header -->
       <div class="text-center mb-12 md:mb-16">
         <h2 class="text-3xl sm:text-4xl md:text-5xl font-bold mb-4">Technical Skills</h2>
-        <p class="text-lg sm:text-xl text-gray-600 max-w-2xl mx-auto px-4">
+        <p class="text-lg sm:text-xl text-neutral-400 max-w-2xl mx-auto px-4">
           A comprehensive overview of my technical expertise and proficiency levels
         </p>
       </div>
@@ -63,7 +61,7 @@ const skills = [
         >
           <template #header>
             <div class="flex items-center gap-3">
-              <UIcon :name="skillGroup.icon" class="text-xl sm:text-2xl text-yellow-500 flex-shrink-0" />
+              <UIcon :name="skillGroup.icon" class="text-xl sm:text-2xl text-primary-500 flex-shrink-0" />
               <h3 class="text-lg sm:text-xl font-semibold">{{ skillGroup.category }}</h3>
             </div>
           </template>
@@ -72,14 +70,7 @@ const skills = [
             <div v-for="skill in skillGroup.items" :key="skill.name" class="space-y-2">
               <div class="flex justify-between items-center">
                 <span class="font-medium text-sm sm:text-base">{{ skill.name }}</span>
-                <span class="text-xs sm:text-sm text-gray-500">{{ skill.level }}%</span>
               </div>
-              <UProgress
-                  :value="skill.level"
-                  :color="skill.color"
-                  size="sm"
-                  class="w-full"
-              />
             </div>
           </div>
         </UCard>
@@ -90,10 +81,10 @@ const skills = [
         <h3 class="text-xl sm:text-2xl font-semibold mb-6">Additional Competencies</h3>
         <div class="flex flex-wrap justify-center gap-2 sm:gap-3 px-4">
           <UBadge
-              v-for="skill in ['Clean Architecture', 'SOLID Principles', 'API Design', 'Microservices', 'Test-Driven Development', 'Agile Methodologies', 'Code Reviews', 'Performance Optimization']"
+              v-for="skill in ['Clean Architecture', 'SOLID Principles', 'API Design', 'Test-Driven Development', 'Agile Methodologies', 'Code Reviews']"
               :key="skill"
               variant="subtle"
-              color="yellow"
+              color="primary"
               size="md"
               class="px-3 sm:px-4 py-2 text-xs sm:text-sm"
           >

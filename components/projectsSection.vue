@@ -85,7 +85,7 @@ const filteredProjects = computed(() => {
       <!-- Section Header -->
       <div class="text-center mb-12 md:mb-16">
         <h2 class="text-3xl sm:text-4xl md:text-5xl font-bold mb-4">Featured Projects</h2>
-        <p class="text-lg sm:text-xl text-gray-600 max-w-3xl mx-auto">
+        <p class="text-lg sm:text-xl text-neutral-400 max-w-3xl mx-auto">
           A showcase of my recent work, demonstrating expertise in full-stack development,
           system architecture, and modern technologies
         </p>
@@ -97,7 +97,7 @@ const filteredProjects = computed(() => {
             v-for="category in categories"
             :key="category"
             :variant="selectedCategory === category ? 'solid' : 'outline'"
-            :color="selectedCategory === category ? 'yellow' : 'gray'"
+            :color="selectedCategory === category ? 'primary' : 'neutral'"
             size="sm"
             @click="selectedCategory = category"
             class="transition-all duration-200"
@@ -122,7 +122,7 @@ const filteredProjects = computed(() => {
             />
             <div class="absolute top-4 right-4">
               <UBadge
-                  :color="project.status === 'Completed' ? 'green' : 'yellow'"
+                  :color="project.status === 'Completed' ? 'primary' : 'neutral'"
                   variant="solid"
                   size="sm"
               >
@@ -130,7 +130,7 @@ const filteredProjects = computed(() => {
               </UBadge>
             </div>
             <div class="absolute top-4 left-4">
-              <UBadge color="white" variant="solid" size="sm">
+              <UBadge color="neutral" variant="solid" size="sm">
                 {{ project.category }}
               </UBadge>
             </div>
@@ -139,10 +139,10 @@ const filteredProjects = computed(() => {
           <!-- Project Content -->
           <template #header>
             <div class="space-y-2">
-              <h3 class="text-xl sm:text-2xl font-bold text-gray-900 group-hover:text-yellow-600 transition-colors">
+              <h3 class="text-xl sm:text-2xl font-bold group-hover:text-primary-600 transition-colors">
                 {{ project.title }}
               </h3>
-              <p class="text-gray-600 text-sm sm:text-base leading-relaxed">
+              <p class="text-neutral-600 text-sm sm:text-base leading-relaxed">
                 {{ project.description }}
               </p>
             </div>
@@ -158,7 +158,7 @@ const filteredProjects = computed(() => {
                     :key="feature"
                     class="flex items-start gap-2 text-sm text-gray-700"
                 >
-                  <UIcon name="i-heroicons-check-circle" class="text-yellow-500 mt-0.5 flex-shrink-0 text-xs" />
+                  <UIcon name="i-heroicons-check-circle" class="text-primary-500 mt-0.5 flex-shrink-0 text-xs" />
                   <span>{{ feature }}</span>
                 </li>
               </ul>
@@ -172,7 +172,7 @@ const filteredProjects = computed(() => {
                     v-for="tech in project.technologies"
                     :key="tech"
                     variant="subtle"
-                    color="yellow"
+                    color="primary"
                     size="sm"
                     class="text-xs"
                 >
@@ -185,7 +185,7 @@ const filteredProjects = computed(() => {
             <div class="flex flex-wrap gap-3 pt-2">
               <UButton
                   v-if="project.liveUrl"
-                  color="yellow"
+                  color="primary"
                   size="sm"
                   :to="project.liveUrl"
                   external

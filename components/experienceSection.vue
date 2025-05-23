@@ -38,7 +38,7 @@ const experiences = [
       <!-- Section Header -->
       <div class="text-center mb-12 md:mb-16">
         <h2 class="text-3xl sm:text-4xl md:text-5xl font-bold mb-4">Professional Experience</h2>
-        <p class="text-lg sm:text-xl text-gray-600 max-w-2xl mx-auto px-4">
+        <p class="text-lg sm:text-xl text-neutral-400 max-w-2xl mx-auto px-4">
           My journey as a software developer, building innovative solutions and growing expertise
         </p>
       </div>
@@ -46,7 +46,7 @@ const experiences = [
       <!-- Experience Timeline -->
       <div class="relative">
         <!-- Timeline Line - Hidden on mobile, visible on larger screens -->
-        <div class="hidden sm:block absolute left-8 top-0 bottom-0 w-0.5 bg-yellow-500"></div>
+        <div class="hidden sm:block absolute left-8 top-0 bottom-0 w-0.5 bg-primary-500"/>
 
         <div class="space-y-8 sm:space-y-12">
           <div
@@ -55,7 +55,7 @@ const experiences = [
               class="relative flex items-start"
           >
             <!-- Timeline Dot - Hidden on mobile -->
-            <div class="hidden sm:block absolute left-6 w-4 h-4 bg-yellow-500 rounded-full border-4 border-white shadow-lg"></div>
+            <div class="hidden sm:block absolute left-6 w-4 h-4 bg-primary-500 rounded-full border-4 border-white shadow-lg"></div>
 
             <!-- Content Card -->
             <div class="w-full sm:ml-16">
@@ -64,7 +64,7 @@ const experiences = [
                   <div class="flex flex-col gap-3">
                     <div>
                       <h3 class="text-lg sm:text-xl font-bold">{{ experience.position }}</h3>
-                      <div class="flex items-center gap-2 text-yellow-500 font-semibold text-sm sm:text-base">
+                      <div class="flex items-center gap-2 text-primary-500 font-semibold text-sm sm:text-base">
                         <UIcon name="i-heroicons-building-office" class="flex-shrink-0" />
                         <span class="truncate">{{ experience.company }}</span>
                       </div>
@@ -93,7 +93,7 @@ const experiences = [
                           :key="achievement"
                           class="flex items-start gap-2"
                       >
-                        <UIcon name="i-heroicons-check-circle" class="text-yellow-500 mt-1 flex-shrink-0 text-sm" />
+                        <UIcon name="i-heroicons-check-circle" class="text-primary-500 mt-1 flex-shrink-0 text-sm" />
                         <span class="text-sm sm:text-base">{{ achievement }}</span>
                       </li>
                     </ul>
