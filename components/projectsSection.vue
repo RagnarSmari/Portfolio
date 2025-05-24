@@ -5,12 +5,12 @@ const projects = [
     title: "Pumba",
     description: "A full-stack web application for companies time management.",
     image: "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=600&h=400&fit=crop",
-    technologies: ["C#", ".NET Core", "Vue.js", "PostgreSQL", "Docker", "Azure"],
+    technologies: ["Golang", "Vue.js", "PostgreSQL", "Docker"],
     features: [
-      "Real-time inventory tracking",
-      "Secure payment integration",
-      "Admin dashboard with analytics",
-      "Responsive mobile design"
+        "Admin dashboard for company management",
+        "Time tracking for projects and tasks",
+        "File management for projects documents",
+        "User management for company and employee accounts",
     ],
     liveUrl: "",
     githubUrl: "",
@@ -21,9 +21,11 @@ const projects = [
     id: 2,
     title: "Gravity simulator",
     description: "Gravity simulator for our solar system",
-    image: "https://images.unsplash.com/photo-1611224923853-80b023f02d71?w=600&h=400&fit=crop",
+    image: "/gravitySimulator.png", 
     technologies: ["C++", "OpenGL"],
     features: [
+        "Simulation of solar system with gravity calculations",
+        "Interactive 3D view with buttons for controlling the simulation",
     ],
     githubUrl: "https://github.com/RagnarSmari/GravitySimulatorOpenGL",
     status: "Completed",
@@ -33,7 +35,7 @@ const projects = [
     id: 3,
     title: "Personal portfolio",
     description: "This website, a personal portfolio showcasing my skills and experience.",
-    image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=600&h=400&fit=crop",
+    image: "personalPortfolio.png",
     technologies: ["Vue.js", "Nuxt.js",],
     features: [
         "Interactive star background"
@@ -50,6 +52,9 @@ const projects = [
     image: "https://images.unsplash.com/photo-1518432031352-d6fc5c10da5a?w=600&h=400&fit=crop",
     technologies: ["C#", "Blazor", "MudBlazor","ASP .NET", "SQL Server"],
     features: [
+        "Catch log for ships",
+        "Deployed on-site",
+        "External communication with Fiskistofa to sync data",
     ],
     githubUrl: "",
     status: "Completed",
@@ -88,8 +93,8 @@ const filteredProjects = computed(() => {
             :variant="selectedCategory === category ? 'solid' : 'outline'"
             :color="selectedCategory === category ? 'primary' : 'neutral'"
             size="sm"
-            @click="selectedCategory = category"
             class="transition-all duration-200"
+            @click="selectedCategory = category"
         >
           {{ category }}
         </UButton>
@@ -104,14 +109,14 @@ const filteredProjects = computed(() => {
         >
           <!-- Project Image -->
           <div class="relative overflow-hidden rounded-t-lg">
-            <img
+            <NuxtImg
                 :src="project.image"
                 :alt="project.title"
                 class="w-full h-48 sm:h-56 object-cover group-hover:scale-105 transition-transform duration-300"
             />
             <div class="absolute top-4 right-4">
               <UBadge
-                  :color="project.status === 'Completed' ? 'primary' : 'neutral'"
+                  :color="project.status === 'Completed' ? 'primary' : 'info'"
                   variant="solid"
                   size="sm"
               >
@@ -139,7 +144,7 @@ const filteredProjects = computed(() => {
           <div class="space-y-4 pt-4">
             <div>
               <h4 class="font-semibold mb-2 text-sm sm:text-base">Key Features:</h4>
-              <ul class="grid grid-cols-1 sm:grid-cols-2 gap-1">
+              <ul class="grid grid-cols-1 sm:grid-cols-1 gap-1">
                 <li
                     v-for="feature in project.features"
                     :key="feature"
