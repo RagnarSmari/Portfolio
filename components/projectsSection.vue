@@ -5,7 +5,7 @@ const projects = [
     title: "Pumba",
     description: "A full-stack web application for companies time management.",
     image: "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=600&h=400&fit=crop",
-    technologies: ["Golang", "Vue.js", "PostgreSQL", "Docker"],
+    technologies: ["C#", ".NET", "Vue.js", "PostgreSQL", "Docker"],
     features: [
         "Admin dashboard for company management",
         "Time tracking for projects and tasks",
@@ -59,6 +59,19 @@ const projects = [
     githubUrl: "",
     status: "Completed",
     category: "FullStack"
+  },{
+    id: 5,
+    title: "Invoice organization through mail",
+    description: "Organizes all incoming invoices in their respective folders",
+    image: "https://images.unsplash.com/photo-1518432031352-d6fc5c10da5a?w=600&h=400&fit=crop",
+    technologies: ["Python", "JavaScript", "Google Cloud", "Google Apps Script"],
+    features: [
+      "Filters mail depending if they are an invoice or not",
+      "Applies specific algorithm on a pdf to find key words and numbers"
+    ],
+    githubUrl: "",
+    status: "Completed",
+    category: "Automation"
   }
 ]
 
